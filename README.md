@@ -12,7 +12,11 @@ I denne øvelsen vil du lære hvordan du konfigurerer Terraform, inkludert både
 
 AWS Comprehend er en språkforståelsestjeneste som bruker maskinlæring for å avdekke innsikt og relasjoner i tekst. Tjenesten kan automatisk analysere tekst for å identifisere sentiment, nøkkelbegreper, språk, emner og entiteter som navn, steder eller organisasjoner, noe som gjør den nyttig for alt fra kundeserviceanalyse til innholdsklassifisering og tekstforståelse.
 
----
+
+## Beskrivelse av lambda-funksjonen i dette repositoriet 
+
+Denne Lambda-funksjonen er konfigurert til å bruke Amazon Comprehend for tekstanalyse, spesielt sentimentanalyse. Lambda-funksjonen kjører i Python 3.8, og benytter en IAM-rolle som tillater full tilgang til Comprehend gjennom policyen comprehend:*. Funksjonen eksponeres via en Lambda URL med offentlig tilgang uten autentisering, og logger sendes til CloudWatch med en oppbevaringsperiode på 7 dager. Kildekoden pakkes som en ZIP-fil og lastes opp via Terraform. Etter deploy får du URL-en som output, slik at funksjonen kan testes med POST-forespørsler for å analysere tekst ved hjelp av Amazon Comprehend.
+
 
 ## Del 1: Kloning av repository og oppsett av Cloud9
 
