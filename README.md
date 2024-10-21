@@ -6,7 +6,11 @@ Her er den omstrukturerte og forbedrede versjonen av dokumentet med riktig bruk 
 
 ## Mål
 
-I denne øvelsen vil du lære hvordan du konfigurerer Terraform, inkludert både provider og backend. Som et eksempel finner du også i dette repoet Terraform-kode som oppretter en AWS Lambda-funksjon. Denne Lambda-funksjonen kaller på AWS-tjenesten Comprehend for å analysere tekst. Vi vil også bruke AWS S3 for å lagre Terraform state-filen.
+I denne øvelsen vil du lære hvordan du konfigurerer Terraform, inkludert både provider og backend. 
+
+Som et eksempel finner du også i dette repoet Terraform-kode som oppretter en AWS Lambda-funksjon. Denne Lambda-funksjonen kaller på AWS-tjenesten Comprehend for å analysere tekst. 
+
+Vi vil også bruke AWS S3 for å lagre Terraform state-filen ved å konfigurere en "backend" i Terraform.
 
 ## AWS Comprehend
 
