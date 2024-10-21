@@ -87,3 +87,7 @@ resource "aws_cloudwatch_log_group" "comprehend_log_group" {
   name              = "/aws/lambda/${var.prefix}_comprehend_lambda_function"
   retention_in_days = 7
 }
+
+output "lambda_url" {
+  value =aws_lambda_function_url.comprehend_lambda_url.function_url
+}

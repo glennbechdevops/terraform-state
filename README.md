@@ -16,23 +16,37 @@ Tjenesten kan automatisk analysere tekst for å identifisere
 sentiment, nøkkelbegreper, språk, emner og entiteter som navn,
 steder eller organisasjoner, noe som gjør den nyttig for alt fra
 kundeserviceanalyse til innholdsklassifisering og tekstforståelse.
+Here’s a QA pass with some corrections and adjustments to the text to improve clarity and accuracy:
 
-### Del 1: Kloning av repository og oppsett i Cloud9
+---
 
-1. **Åpne ditt AWS Cloud9-miljø**  
-   Start med å logge inn i AWS Cloud9, og om nødvendig opprett et nytt miljø.
+### Del 1: Kloning av repository og oppsett av Cloud9
 
-2. **Klon repositoryet med Terraform-konfigurasjon**  
-   Kjør følgende kommando i Cloud9-terminalen for å klone det nødvendige repositoryet:
+#### Åpne ditt AWS Cloud9-miljø
 
-   ```bash
-   git clone <repository-url>
-   cd <repository-directory>
-   ```
+* Start med å logge inn i AWS Cloud9.
+* Lag en klone av dette repositoryet.
 
-   Husk å erstatte `<repository-url>` og `<repository-directory>` med korrekt informasjon.
+#### Deaktiver standardrettigheter i Cloud9
 
-3. **Installer Terraform (hvis nødvendig)**  
+Cloud9 kommer med et sett av standardrettigheter som er tilstrekkelige for mange bruksscenarioer.
+Men Cloud9 kan ikke opprette IAM-roller. I denne laben må vi derfor deaktivere **Cloud9 Managed temporary credentials**.
+
+Trykk på "9"-ikonet øverst til høyre, og velg "Preferences". Deaktiver `AWS Managed temporary credentials`.
+
+![Slå av midlertidige Cloud9-credentials](./img/disable_credentials.png)
+
+Deretter må vi lagre egne IAM-nøkler, som vi har gjort i tidligere øvinger.
+I Cloud9 terminalen bruker vi kommandoen:
+
+```bash
+aws configure
+```
+
+* Bruk `eu-west-1` som region.
+* Bruk `json` som output format.
+
+### Installer Terraform   
    Hvis Terraform ikke allerede er installert i ditt Cloud9-miljø, installer det ved å følge instruksjonene fra forrige
    del.
 
@@ -50,9 +64,9 @@ terraform -v
    Start med å opprette en fil som heter `provider.tf` i ditt prosjekt. Denne filen definerer Terraform-konfigurasjonen
    din, inkludert hvilken provider som skal brukes, og spesifiserer providerens versjon.
 
-   ```hcl
-   terraform {
-  required_version = ">= 1.6.0"  # Krever minst versjon 1.6.0 av Terraform
+```hcl
+terraform {
+  required_version = ">= 1..0"  # Krever minst versjon 1.6.0 av Terraform
   required_providers {
     aws = {
       source  = "hashicorp/aws"
@@ -64,7 +78,7 @@ terraform -v
 provider "aws" {
   region = "eu-west-1"  # Velg ønsket region
 }
-   ```
+```
 
 **Forklaring:**
 
@@ -78,10 +92,11 @@ provider "aws" {
 
 * forsøke å endre `required_version` for terraform til en nyere versjon en du installerte i cloud9 og forsøk å gjøre
   en ````terraform init```` hva skjer? Endre tilbake
-* Kjør `terraform apply --auto-approve` - legg merke til at du får en terraform.tfstate fil i katalogen din, forsikre
+* Kjør ` terraform apply --auto-approve --var "prefix=<studentnavn>"` -- legg merke til at du får en terraform.tfstate fil i katalogen din, forsikre
   deg om at du vet hvorfor. Spør gjerne ChatGPT :-)
+* Vær sikker på at du forstår --var argumentet!
 
-Du kan teste lambdafunksjonen med følgend
+Du kan teste lambdafunksjonen med følgende kommand
 
 ```shell
 $URL=<output fra terraform, verdien til `Terraform Function` sin URL
