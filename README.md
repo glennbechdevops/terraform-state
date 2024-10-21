@@ -21,6 +21,7 @@ AWS Comprehend er en språkforståelsestjeneste som bruker maskinlæring for å 
 
 Denne Lambda-funksjonen er konfigurert til å bruke Amazon Comprehend for tekstanalyse, spesielt sentimentanalyse. Lambda-funksjonen kjører i Python 3.8, og benytter en IAM-rolle som tillater full tilgang til Comprehend gjennom policyen comprehend:*. Funksjonen eksponeres via en Lambda URL med offentlig tilgang uten autentisering, og logger sendes til CloudWatch med en oppbevaringsperiode på 7 dager. Kildekoden pakkes som en ZIP-fil og lastes opp via Terraform. Etter deploy får du URL-en som output, slik at funksjonen kan testes med POST-forespørsler for å analysere tekst ved hjelp av Amazon Comprehend.
 
+Denne Lambda-funksjonen bruker mekanismen `Function URL`, som gir en enkel HTTP-endepunkt for å kalle funksjonen direkte, uten behov for en HTTP API Gateway trigger. Dette forenkler oppsettet og reduserer kompleksiteten, samtidig som det gir en rask måte å eksponere funksjonen på for testing og integrasjon.
 
 ## Del 1: Kloning av repository og oppsett av Cloud9
 
