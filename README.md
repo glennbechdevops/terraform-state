@@ -25,7 +25,7 @@ AWS Comprehend er en språkforståelsestjeneste som bruker maskinlæring for å 
 
 Cloud9 kommer med et sett av standardrettigheter som er tilstrekkelige for mange bruksscenarioer. Men Cloud9 kan ikke opprette IAM-roller. I denne laben må vi derfor deaktivere **Cloud9 Managed temporary credentials**.
 
-Trykk på "9"-ikonet øverst til høyre, og velg "Preferences". Deaktiver `AWS Managed temporary credentials`.
+Trykk på "9"-ikonet øverst til venstre, og velg "Preferences". Deaktiver `AWS Managed temporary credentials`.
 
 ![Slå av midlertidige Cloud9-credentials](./img/disable_credentials.png)
 
