@@ -1,7 +1,3 @@
-Her er den omstrukturerte og forbedrede versjonen av dokumentet med riktig bruk av overskrifter og gruppering:
-
----
-
 # Øvelse: Terraform-konfigurasjon med AWS S3, Providers, og State Management
 
 ## Mål
