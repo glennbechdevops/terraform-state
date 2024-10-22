@@ -21,13 +21,16 @@ Denne Lambda-funksjonen bruker mekanismen `Function URL`, som gir en enkel HTTP-
 
 ## Del 1: Kloning av repository og oppsett av Cloud9
 
-* Se på lambda.tf Se på ressursene. Kopier gjerne hele filen inn i ChatGPT og be om en forklaring. Spør foreleser om noe er uklart.
-* Se på comprehend.py og forsikre deg om at du forstår koden
-
 ### Åpne ditt AWS Cloud9-miljø
 
 - Start med å logge inn i AWS Cloud9.
 - Lag en klone av dette repositoryet.
+
+### Se på koden
+
+* Se på lambda.tf Se på ressursene. Kopier gjerne hele filen inn i ChatGPT og be om en forklaring. Spør foreleser om noe er uklart.
+* Se på comprehend.py og forsikre deg om at du forstår koden
+
 
 ### Deaktiver standardrettigheter i Cloud9
 
