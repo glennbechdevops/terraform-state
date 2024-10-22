@@ -166,7 +166,11 @@ terraform apply --auto-approve -var "prefix=<student_name>"
 - `terraform plan` viser deg hva som kommer til å bli opprettet eller endret i AWS.
 - `terraform apply` vil faktisk opprette de definerte ressursene.
 
----
+#### Terraform avanserte state kommandoer 
+
+- Prøv å kjøre `terraform state list` - du vil se de ressursene Terraform "kjenner til"
+- Prøv å kjøre `terraform state rm aws_lambda_function.comprehend_lambda`
+- Kjør så terraform plan - hva skjer? Hvorfor vil Terraform lage Lambda på nytt? 
 
 ## Del 4: Rydd opp
 
