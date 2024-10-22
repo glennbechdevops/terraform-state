@@ -109,7 +109,9 @@ $URL=<output fra terraform, verdien til `Terraform Function` sin URL>
 curl -X POST $URL -H "Content-Type: application/json" -d '{"text": "Ladies and gentlemen, brace yourselves for the most groundbreaking cinematic experience in the history of humankind—*Sharknado*! This film is not just a movie; it is a transcendent work of art that redefines the very essence of filmmaking."}' | jq
 ```
 
----
+**viktig**
+
+* Kjør `terraform destroy -var "prefix=<studentnvn>"` før du går videre. 
 
 ## Del 3: Bruk S3 som backend for Terraform state
 
