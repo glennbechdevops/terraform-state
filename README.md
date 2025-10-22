@@ -152,13 +152,11 @@ terraform init
 ```
 
 - Legg merke til at du ikke har noen `terraform.tfstate`-fil på ditt lokale filsystem!
-- Sjekk state-filen i S3.
+- Gå til S3, finn bucket med Navn `pgr301-2024-terraform-state` - og se at det er blitt opprettet et objekt med navn <studentnavn>-state-lab.tfstate
 
-Når provisjoneringen er ferdig, kan du gå til AWS-konsollen, finne S3-bucketen du har satt opp som backend, og bekrefte at `terraform.tfstate`-filen er opprettet på plassen du valgte.
+### Lag AWS Lambda-funksjonen på nytt
 
-### Provisjoner AWS Lambda-funksjonen på nytt
-
-Etter å ha initialisert Terraform, kan du kjøre planleggings- og provisjoneringsprosessen:
+Etter å ha initialisert Terraform, kan du kjøre plan- og apply:
 
 ```bash
 terraform plan -var "prefix=<student_name>"
@@ -173,8 +171,6 @@ terraform apply --auto-approve -var "prefix=<student_name>"
 #### Terraform avanserte state kommandoer 
 
 - Prøv å kjøre `terraform state list` - du vil se de ressursene Terraform "kjenner til"
-- Prøv å kjøre `terraform state rm aws_lambda_function.comprehend_lambda`
-- Kjør så terraform plan - hva skjer? Hvorfor vil Terraform lage Lambda på nytt? 
 
 ## Del 4: Rydd opp
 
