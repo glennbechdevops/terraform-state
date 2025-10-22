@@ -19,39 +19,40 @@ Denne Lambda-funksjonen er konfigurert til å bruke Amazon Comprehend for teksta
 
 Denne Lambda-funksjonen bruker mekanismen `Function URL`, som gir en enkel HTTP-endepunkt for å kalle funksjonen direkte, uten behov for en HTTP API Gateway trigger. Dette forenkler oppsettet og reduserer kompleksiteten, samtidig som det gir en rask måte å eksponere funksjonen på for testing og integrasjon.
 
-## Del 1: Kloning av repository og oppsett av Cloud9
+## Del 1: Oppsett av GitHub Codespaces
 
-### Åpne ditt AWS Cloud9-miljø
+### Åpne repository i GitHub Codespaces
 
-- Start med å logge inn i AWS Cloud9.
-- Lag en klone av dette repositoryet.
+- Gå til dette repositoryet på GitHub.
+- Klikk på den grønne **Code**-knappen og velg **Codespaces**.
+- Klikk på **Create codespace on main** for å starte et nytt Codespaces-miljø.
+
+GitHub Codespaces vil automatisk starte et Ubuntu-basert utviklingsmiljø i nettleseren din.
 
 ### Se på koden
 
 * Se på lambda.tf Se på ressursene. Kopier gjerne hele filen inn i ChatGPT og be om en forklaring. Spør foreleser om noe er uklart.
 * Se på comprehend.py og forsikre deg om at du forstår koden
 
+### Konfigurer AWS-credentials
 
-### Deaktiver standardrettigheter i Cloud9
+I Codespaces-terminalen må vi konfigurere AWS-credentials for å få tilgang til AWS-tjenestene.
 
-Cloud9 kommer med et sett av standardrettigheter som er tilstrekkelige for mange bruksscenarioer. Men Cloud9 kan ikke opprette IAM-roller. I denne laben må vi derfor deaktivere **Cloud9 Managed temporary credentials**.
-
-Trykk på "9"-ikonet øverst til venstre, og velg "Preferences". Deaktiver `AWS Managed temporary credentials`.
-
-![Slå av midlertidige Cloud9-credentials](./img/disable_credentials.png)
-
-Deretter må vi lagre egne IAM-nøkler, som vi har gjort i tidligere øvinger. I Cloud9-terminalen bruker vi kommandoen:
+Kjør følgende kommando i terminalen:
 
 ```bash
 aws configure
 ```
 
-- Bruk `eu-west-1` som region.
-- Bruk `json` som output format.
+Du blir bedt om å oppgi:
+- **AWS Access Key ID**: Din AWS access key
+- **AWS Secret Access Key**: Din AWS secret key
+- **Default region name**: Bruk `eu-west-1`
+- **Default output format**: Bruk `json`
 
 ### Installer Terraform
 
-Hvis Terraform ikke allerede er installert i ditt Cloud9-miljø, installer det ved å følge instruksjonene fra forrige del.
+Terraform er ikke forhåndsinstallert i GitHub Codespaces, så vi må installere det manuelt:
 
 ```bash
 wget https://releases.hashicorp.com/terraform/1.9.0/terraform_1.9.0_linux_amd64.zip
@@ -63,7 +64,8 @@ terraform -v
 Installer `jq` som hjelper oss med å formatere JSON:
 
 ```bash
-sudo yum install -y jq
+sudo apt-get update
+sudo apt-get install -y jq
 ```
 
 ---
@@ -98,7 +100,7 @@ provider "aws" {
 
 ### Oppgaver
 
-- Forsøk å endre `required_version` for Terraform til en nyere versjon enn du har installert i Cloud9 og forsøk å gjøre en `terraform init`. Hva skjer? Endre tilbake.
+- Forsøk å endre `required_version` for Terraform til en nyere versjon enn du har installert og forsøk å gjøre en `terraform init`. Hva skjer? Endre tilbake.
 - Kjør `terraform apply --auto-approve --var "prefix=<studentnavn>"`. Legg merke til at du får en `terraform.tfstate` fil i katalogen din, forsikre deg om at du vet hvorfor. Spør gjerne ChatGPT 😊.
 - Vær sikker på at du forstår `--var` argumentet!
 
