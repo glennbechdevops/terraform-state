@@ -1,24 +1,41 @@
 {
-  "name": "Terraform Development",
+  "name": "Spring Boot CloudWatch Lab",
   "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+
   "features": {
+    "ghcr.io/devcontainers/features/java:1": {
+      "version": "17",
+      "installMaven": "true"
+    },
     "ghcr.io/devcontainers/features/terraform:1": {
-      "version": "latest",
-      "tflint": "latest",
-      "terragrunt": "latest"
+      "version": "latest"
     },
     "ghcr.io/devcontainers/features/aws-cli:1": {
       "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "installZsh": "false",
+      "configureZshAsDefaultShell": "false",
+      "installOhMyZsh": "false",
+      "upgradePackages": "true"
     }
   },
+
   "customizations": {
     "vscode": {
       "extensions": [
+        "vscjava.vscode-java-pack",
+        "pivotal.vscode-spring-boot",
+        "vscjava.vscode-spring-boot-dashboard",
         "hashicorp.terraform",
-        "ms-azuretools.vscode-docker"
+        "amazonwebservices.aws-toolkit-vscode"
       ]
     }
   },
-  "postCreateCommand": "terraform --version",
+
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y jq",
+
+  "forwardPorts": [8080],
+
   "remoteUser": "vscode"
 }
