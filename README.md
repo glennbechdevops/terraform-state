@@ -50,25 +50,6 @@ Du blir bedt om å oppgi:
 - **Default region name**: Bruk `eu-west-1`
 - **Default output format**: Bruk `json`
 
-### Installer Terraform
-
-Terraform er ikke forhåndsinstallert i GitHub Codespaces, så vi må installere det manuelt:
-
-```bash
-wget https://releases.hashicorp.com/terraform/1.9.0/terraform_1.9.0_linux_amd64.zip
-unzip terraform_1.9.0_linux_amd64.zip
-sudo mv terraform /usr/local/bin/
-terraform -v
-```
-
-Installer `jq` som hjelper oss med å formatere JSON:
-
-```bash
-sudo apt-get update
-sudo apt-get install -y jq
-```
-
----
 
 ## Del 2: Konfigurasjon av provider
 
