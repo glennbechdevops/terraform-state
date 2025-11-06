@@ -55,7 +55,7 @@ Du blir bedt om å oppgi:
 
 ### Required Providers og provider-versjonering
 
-Start med å opprette en fil som heter `provider.tf` i ditt prosjekt. Denne filen definerer Terraform-konfigurasjonen din, inkludert hvilken provider som skal brukes, og spesifiserer providerens versjon.
+Start med å opprette en fil som heter `provider.tf`. Denne filen definerer Terraform-konfigurasjonen din, inkludert hvilken provider som skal brukes, og spesifiserer providerens versjon.
 
 ```hcl
 terraform {
