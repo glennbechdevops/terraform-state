@@ -103,7 +103,8 @@ curl -X POST $URL -H "Content-Type: application/json" -d '{"text": "Ladies and g
 
 ### Konfigurer S3 som backend for Terraform state
 
-Legg til følgende konfigurasjon inn `terraform {}`-blokken i `provider.tf`:
+* Legg til følgende konfigurasjon inn `terraform {}`-blokken i `provider.tf`:
+* Husk å bytte verdien i "key" med ditt studentnavn
 
 ```hcl
 backend "s3" {
