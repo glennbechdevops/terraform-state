@@ -81,14 +81,17 @@ provider "aws" {
 
 ### Oppgaver
 
+- Finn ut hvilke terraform versjon `terraform -version`  
 - Forsøk å endre `required_version` for Terraform til en nyere versjon enn du har installert og forsøk å gjøre en `terraform init`. Hva skjer? Endre tilbake.
 - Kjør `terraform apply --auto-approve --var "prefix=<studentnavn>"`. Legg merke til at du får en `terraform.tfstate` fil i katalogen din, forsikre deg om at du vet hvorfor. Spør gjerne ChatGPT 😊.
 - Vær sikker på at du forstår `--var` argumentet!
 
-Du kan teste Lambda-funksjonen med følgende kommando. URL ser du etter en apply som en output:
+- Kopier eller noter verdien fra `output:` detter er URL'en til lambdafunksjonen din
+
+* Du kan teste Lambda-funksjonen med følgende kommando. 
 
 ```bash
-$URL=<output fra terraform, verdien til `Terraform Function` sin URL>
+URL=<lambda url from output>
 curl -X POST $URL -H "Content-Type: application/json" -d '{"text": "Ladies and gentlemen, brace yourselves for the most groundbreaking cinematic experience in the history of humankind—*Sharknado*! This film is not just a movie; it is a transcendent work of art that redefines the very essence of filmmaking."}' | jq
 ```
 
